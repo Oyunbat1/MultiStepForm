@@ -73,6 +73,7 @@ const UserInformationStep = (props) => {
               placeholder="Your first name"
               name="firstName"
               onChange={onChange}
+              value={props.formValues.firstName}
             ></input>
             {props.formErrors.firstName && (
               <p className="text-red-600 text-[10px]">
@@ -93,6 +94,7 @@ const UserInformationStep = (props) => {
               placeholder="Your last name"
               name="lastName"
               onChange={onChange}
+              value={props.formValues.lastName}
             ></input>
             {props.formErrors.lastName && (
               <p className="text-red-600 text-[10px]">
@@ -113,6 +115,7 @@ const UserInformationStep = (props) => {
               placeholder="Your user name"
               name="userName"
               onChange={onChange}
+              value={props.formValues.userName}
             ></input>
             {props.formErrors.userName && (
               <p className="text-red-600 text-[10px]">

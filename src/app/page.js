@@ -4,7 +4,7 @@ import UserInformationStep from "@/components/UserInformationStep";
 import ProfileStep from "@/components/ProfileStep";
 import YoureAllSet from "@/components/YoureAllSet";
 import ContactStep from "@/components/ContactStep";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [currentStep, setcurrentStep] = useState(0);
@@ -35,7 +35,22 @@ export default function Home() {
 
   const nextStep = () => {
     setcurrentStep((prev) => prev + 1);
+
+    window.localStorage.setItem(
+      "multi-step-form",
+      JSON.stringify({ formValues, currentStep: currentStep + 1 })
+    );
   };
+
+  useEffect(() => {
+    const localStorage = JSON.parse(
+      window.localStorage.getItem("multi-step-form")
+    );
+
+    if (!localStorage) return;
+    setFormValues(localStorage.formValues);
+    setcurrentStep(localStorage.currentStep);
+  }, []);
 
   return (
     <div className="bg-slate-700 h-screen w-screen">

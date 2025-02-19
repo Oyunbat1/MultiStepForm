@@ -21,6 +21,14 @@ const ContactStep = (props) => {
         email: "",
       }));
     }
+
+    const emailRegexPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegexPattern.test(props.formValues.email)) {
+      props.setFormErrors((prev) => ({
+        ...prev,
+        email: "Mайл бүтэц биш байна.",
+      }));
+    }
     if (!props.formValues.phoneNumber) {
       props.setFormErrors((prev) => ({
         ...prev,
