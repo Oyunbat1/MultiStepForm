@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [currentStep, setcurrentStep] = useState(0);
+  
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
@@ -14,6 +15,7 @@ export default function Home() {
     email: "",
     phoneNumber: "",
     password: "",
+      confirmPassword: ""
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -23,7 +25,16 @@ export default function Home() {
     email: "",
     phoneNumber: "",
     password: "",
+      confirmPassword: ""
   });
+
+  const prevStep = () => {
+    setcurrentStep((prev) => prev - 1)
+  }
+
+  const nextStep = () => {
+    setcurrentStep((prev) => prev + 1);
+  }
 
   return (
     <div className="bg-slate-700 h-screen w-screen">
@@ -33,17 +44,26 @@ export default function Home() {
             <Header />
             {currentStep === 0 && (
               <UserInformationStep
+              currentStep = {currentStep}
                 formErrors={formErrors}
                 formValues={formValues}
                 setFormValues={setFormValues}
                 setcurrentStep={setcurrentStep}
                 setFormErrors={setFormErrors}
+                prevStep={prevStep}
+                nextStep={nextStep}
               ></UserInformationStep>
             )}
             {currentStep === 1 && (
               <ContactStep
-                formValues={formValues}
-                setFormValues={setFormValues}
+              currentStep = {currentStep}
+              formErrors={formErrors}
+              formValues={formValues}
+              setFormValues={setFormValues}
+              setcurrentStep={setcurrentStep}
+              setFormErrors={setFormErrors}
+              prevStep={prevStep}
+                nextStep={nextStep}
               ></ContactStep>
             )}
           </div>

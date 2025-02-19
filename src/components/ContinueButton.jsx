@@ -1,4 +1,5 @@
 const ContinueButton = (props) => {
+
   return (
     <div
       className={`absolute bottom-[30px] ${
@@ -20,7 +21,7 @@ const ContinueButton = (props) => {
 
       <button
         onClick={props.nextStep}
-        className={`${
+        className={`${ 
           props.currentStep === 2
             ? "flex w-[208px] h-[36px] items-center justify-center rounded-md bg-[#121316] text-white text-[14px] hover:bg-slate-700  "
             : "flex w-[315px] h-[36px] items-center justify-center rounded-md bg-[#121316] text-white text-[14px] hover:bg-slate-700 "
