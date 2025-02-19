@@ -1,14 +1,14 @@
 "use client";
 import Header from "@/components/Header";
 import UserInformationStep from "@/components/UserInformationStep";
-import ProfileStep from "@/components/ProfileStep"
+import ProfileStep from "@/components/ProfileStep";
 import YoureAllSet from "@/components/YoureAllSet";
 import ContactStep from "@/components/ContactStep";
 import { useState } from "react";
 
 export default function Home() {
   const [currentStep, setcurrentStep] = useState(0);
-
+  console.log(currentStep);
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
@@ -16,7 +16,7 @@ export default function Home() {
     email: "",
     phoneNumber: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -26,16 +26,16 @@ export default function Home() {
     email: "",
     phoneNumber: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const prevStep = () => {
-    setcurrentStep((prev) => prev - 1)
-  }
+    setcurrentStep((prev) => prev - 1);
+  };
 
   const nextStep = () => {
     setcurrentStep((prev) => prev + 1);
-  }
+  };
 
   return (
     <div className="bg-slate-700 h-screen w-screen">
@@ -68,11 +68,13 @@ export default function Home() {
               ></ContactStep>
             )}
             {currentStep === 2 && (
-              <ProfileStep currentStep={currentStep} />
+              <ProfileStep
+                currentStep={currentStep}
+                prevStep={prevStep}
+                nextStep={nextStep}
+              />
             )}
-            {currentStep === 3 && (
-              <YoureAllSet/>
-            )}
+            {currentStep === 3 && <YoureAllSet />}
           </div>
         </div>
       </div>
