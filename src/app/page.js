@@ -1,13 +1,14 @@
 "use client";
 import Header from "@/components/Header";
 import UserInformationStep from "@/components/UserInformationStep";
-
+import ProfileStep from "@/components/ProfileStep"
+import YoureAllSet from "@/components/YoureAllSet";
 import ContactStep from "@/components/ContactStep";
 import { useState } from "react";
 
 export default function Home() {
   const [currentStep, setcurrentStep] = useState(0);
-  
+
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
@@ -15,7 +16,7 @@ export default function Home() {
     email: "",
     phoneNumber: "",
     password: "",
-      confirmPassword: ""
+    confirmPassword: ""
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -25,7 +26,7 @@ export default function Home() {
     email: "",
     phoneNumber: "",
     password: "",
-      confirmPassword: ""
+    confirmPassword: ""
   });
 
   const prevStep = () => {
@@ -44,7 +45,7 @@ export default function Home() {
             <Header />
             {currentStep === 0 && (
               <UserInformationStep
-              currentStep = {currentStep}
+                currentStep={currentStep}
                 formErrors={formErrors}
                 formValues={formValues}
                 setFormValues={setFormValues}
@@ -56,15 +57,21 @@ export default function Home() {
             )}
             {currentStep === 1 && (
               <ContactStep
-              currentStep = {currentStep}
-              formErrors={formErrors}
-              formValues={formValues}
-              setFormValues={setFormValues}
-              setcurrentStep={setcurrentStep}
-              setFormErrors={setFormErrors}
-              prevStep={prevStep}
+                currentStep={currentStep}
+                formErrors={formErrors}
+                formValues={formValues}
+                setFormValues={setFormValues}
+                setcurrentStep={setcurrentStep}
+                setFormErrors={setFormErrors}
+                prevStep={prevStep}
                 nextStep={nextStep}
               ></ContactStep>
+            )}
+            {currentStep === 2 && (
+              <ProfileStep currentStep={currentStep} />
+            )}
+            {currentStep === 3 && (
+              <YoureAllSet/>
             )}
           </div>
         </div>
