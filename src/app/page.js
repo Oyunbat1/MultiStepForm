@@ -1,5 +1,5 @@
 "use client";
-import Header from "@/components/Header";
+
 import UserInformationStep from "@/components/UserInformationStep";
 import ProfileStep from "@/components/ProfileStep";
 import YoureAllSet from "@/components/YoureAllSet";
@@ -40,9 +40,12 @@ export default function Home() {
   return (
     <div className="bg-slate-700 h-screen w-screen">
       <div className="flex flex-col justify-center items-center h-screen gap-5">
-        <div className="w-[380px] bg-white h-[555px] rounded-xl  ">
+        <div
+          className={`w-[380px] bg-white h-[555px] rounded-xl ${
+            currentStep === 3 ? "h-[200px]" : ""
+          }`}
+        >
           <div className="p-[32px] flex flex-col h-full justify-around gap-2 relative">
-            <Header />
             {currentStep === 0 && (
               <UserInformationStep
                 currentStep={currentStep}

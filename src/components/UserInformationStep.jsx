@@ -1,4 +1,5 @@
 import ContinueButton from "./ContinueButton";
+import Header from "@/components/Header";
 const UserInformationStep = (props) => {
   const onChange = (event) => {
     props.setFormValues((prev) => ({
@@ -14,22 +15,19 @@ const UserInformationStep = (props) => {
         ...prev,
         firstName: "Нэрээ оруулна уу",
       }));
-    }
-    else {
+    } else {
       props.setFormErrors((prev) => ({
         ...prev,
         firstName: "",
       }));
     }
 
-
     if (!props.formValues.lastName) {
       props.setFormErrors((prev) => ({
         ...prev,
         lastName: "Нэрээ оруулна уу",
       }));
-    }
-    else {
+    } else {
       props.setFormErrors((prev) => ({
         ...prev,
         lastName: "",
@@ -40,8 +38,7 @@ const UserInformationStep = (props) => {
         ...prev,
         userName: "Нэрээ оруулна уу",
       }));
-    }
-    else {
+    } else {
       props.setFormErrors((prev) => ({
         ...prev,
         userName: "",
@@ -53,81 +50,84 @@ const UserInformationStep = (props) => {
       !props.formValues.lastName ||
       !props.formValues.userName
     ) {
-     return
+      return;
     }
 
     props.nextStep();
   };
   return (
-    <form onSubmit={handleNext}>
-      <div className=" flex flex-col gap-2 mt-[116px] mb-[100px]">
-        <div className="flex flex-col">
-          <label className="text-[#334155 font-[600] tracking-normal text-[12px] ">
-            First name <span className="text-red-600">*</span>
-          </label>
-          <input
-            className={`${
-              props.formErrors.firstName == ""
-                ? "border-grey-400 border-[1px]   focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
-                : "border-red-600 border-[1px]  focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
-            }`}
-            placeholder="Your first name"
-            name="firstName"
-            onChange={onChange}
-          ></input>
-          {props.formErrors.firstName && (
-            <p className="text-red-600 text-[10px]">
-              {props.formErrors.firstName}
-            </p>
-          )}
-        </div>
-        <div className="flex flex-col">
-          <label className="text-[#334155 font-[600] tracking-normal text-[12px] pb-[4px]">
-            Last name <span className="text-red-600">*</span>
-          </label>
-          <input
-            className={`${
-              props.formErrors.lastName == ""
-                ? "border-grey-400 border-[1px]   focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
-                : "border-red-600 border-[1px]  focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
-            }`}
-            placeholder="Your last name"
-            name="lastName"
-            onChange={onChange}
-          ></input>
-          {props.formErrors.lastName && (
-            <p className="text-red-600 text-[10px]">
-              {props.formErrors.lastName}
-            </p>
-          )}
-        </div>
-        <div className="flex flex-col">
-          <label className="text-[#334155 font-[600] tracking-normal text-[12px] pb-[4px]">
-            Username <span className="text-red-600">*</span>
-          </label>
-          <input
-            className={`${
-              props.formErrors.userName == ""
-                ? "border-grey-400 border-[1px]   focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
-                : "border-red-600 border-[1px]  focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
-            }`}
-            placeholder="Your user name"
-            name="userName"
-            onChange={onChange}
-          ></input>
-          {props.formErrors.userName && (
-            <p className="text-red-600 text-[10px]">
-              {props.formErrors.userName}
-            </p>
-          )}
-        </div>
+    <>
+      <Header />
+      <form onSubmit={handleNext}>
+        <div className=" flex flex-col gap-2 mt-[116px] mb-[100px]">
+          <div className="flex flex-col">
+            <label className="text-[#334155 font-[600] tracking-normal text-[12px] ">
+              First name <span className="text-red-600">*</span>
+            </label>
+            <input
+              className={`${
+                props.formErrors.firstName == ""
+                  ? "border-grey-400 border-[1px]   focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
+                  : "border-red-600 border-[1px]  focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
+              }`}
+              placeholder="Your first name"
+              name="firstName"
+              onChange={onChange}
+            ></input>
+            {props.formErrors.firstName && (
+              <p className="text-red-600 text-[10px]">
+                {props.formErrors.firstName}
+              </p>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label className="text-[#334155 font-[600] tracking-normal text-[12px] pb-[4px]">
+              Last name <span className="text-red-600">*</span>
+            </label>
+            <input
+              className={`${
+                props.formErrors.lastName == ""
+                  ? "border-grey-400 border-[1px]   focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
+                  : "border-red-600 border-[1px]  focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
+              }`}
+              placeholder="Your last name"
+              name="lastName"
+              onChange={onChange}
+            ></input>
+            {props.formErrors.lastName && (
+              <p className="text-red-600 text-[10px]">
+                {props.formErrors.lastName}
+              </p>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label className="text-[#334155 font-[600] tracking-normal text-[12px] pb-[4px]">
+              Username <span className="text-red-600">*</span>
+            </label>
+            <input
+              className={`${
+                props.formErrors.userName == ""
+                  ? "border-grey-400 border-[1px]   focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
+                  : "border-red-600 border-[1px]  focus:border-blue-600 focus:ring-1 focus:outline-none py-[6px] rounded-md placeholder:text-[14px] placeholder:font-[600] placeholder:pl-2"
+              }`}
+              placeholder="Your user name"
+              name="userName"
+              onChange={onChange}
+            ></input>
+            {props.formErrors.userName && (
+              <p className="text-red-600 text-[10px]">
+                {props.formErrors.userName}
+              </p>
+            )}
+          </div>
 
-        <ContinueButton
-          currentStep={props.currentStep + 1}
-          prevStep={props.prevStep}
-        />
-      </div>
-    </form>
+          <ContinueButton
+            currentStep={props.currentStep + 1}
+            prevStep={props.prevStep}
+          />
+        </div>
+      </form>
+    </>
   );
 };
 

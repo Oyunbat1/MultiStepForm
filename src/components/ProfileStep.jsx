@@ -1,7 +1,9 @@
 import ContinueButton from "./ContinueButton";
+import Header from "@/components/Header";
 const ProfileStep = (props) => {
   return (
     <div>
+      <Header></Header>
       <div>
         <div>
           <h1 className="text-[#334155 font-[600] tracking-normal text-[12px] mb-[6px]">
