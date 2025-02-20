@@ -29,6 +29,15 @@ const ContactStep = (props) => {
         email: "Mайл бүтэц биш байна.",
       }));
     }
+
+    const passwordRegexPattern = /^\+?\d{8}$/;
+    if(!passwordRegexPattern.test(props.formValues.phoneNumber)){
+      props.setFormErrors((prev)=>({
+        ...prev,
+        phoneNumber: "Дугаар буруу байна."
+      }))
+    }
+
     if (!props.formValues.phoneNumber) {
       props.setFormErrors((prev) => ({
         ...prev,
@@ -61,8 +70,11 @@ const ContactStep = (props) => {
         ...prev,
         confirmPassword: "",
       }));
+    }                                                                                                           if(props.formValues.password != props.formValues.confirmPassword && props.formValues.confirmPassword){
+      props.setFormErrors((prev) => ({
+        ...prev, confirmPassword: "Пасспорт таарахгүй байна."
+      }))
     }
-
     if (
       !props.formValues.email ||
       !props.formValues.phoneNumber ||
@@ -92,6 +104,7 @@ const ContactStep = (props) => {
               name="email"
               onChange={onChange}
               type="text"
+              value = {props.formValues.email}
             ></input>
             {props.formErrors.email && (
               <p className="text-red-600 text-[10px]">
@@ -114,6 +127,7 @@ const ContactStep = (props) => {
               name="phoneNumber"
               onChange={onChange}
               type="number"
+              value = {props.formValues.phoneNumber}
             ></input>
             {props.formErrors.phoneNumber && (
               <p className="text-red-600 text-[10px]">
@@ -136,6 +150,7 @@ const ContactStep = (props) => {
               name="password"
               onChange={onChange}
               type="password"
+              value = {props.formValues.password}
             ></input>
             {props.formErrors.password && (
               <p className="text-red-600 text-[10px]">
@@ -158,6 +173,7 @@ const ContactStep = (props) => {
               name="confirmPassword"
               onChange={onChange}
               type="password"
+              value = {props.formValues.confirmPassword}
             ></input>
             {props.formErrors.confirmPassword && (
               <p className="text-red-600 text-[10px]">
@@ -175,3 +191,5 @@ const ContactStep = (props) => {
   );
 };
 export default ContactStep;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+  

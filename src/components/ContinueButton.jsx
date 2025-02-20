@@ -35,15 +35,15 @@ const ContinueButton = (props) => {
         onClick={props.nextStep}
         className={`${
           props.currentStep == 2
-            ? "flex w-[210px] h-[36px] items-center justify-center rounded-md bg-[#121316] text-white text-[14px] hover:bg-slate-700  "
+            ? "flex w-[209px] h-[36px] items-center justify-center rounded-md bg-[#121316] text-white text-[14px] hover:bg-slate-700  "
             : "flex w-[315px] h-[36px] items-center justify-center rounded-md bg-[#121316] text-white text-[14px] hover:bg-slate-700 "
         } ${
           props.currentStep == 3
-            ? "flex w-[210px] h-[36px] items-center justify-center rounded-md bg-[#121316] text-white text-[14px] hover:bg-slate-700  "
+            ? "flex w-[209px] h-[36px] items-center justify-center rounded-md bg-[#121316] text-white text-[14px] hover:bg-slate-700  "
             : "flex w-[315px] h-[36px] items-center justify-center rounded-md bg-[#121316] text-white text-[14px] hover:bg-slate-700 "
         }`}
       >
-        Continue<span> {props.currentStep}/3</span>
+        Continue  <span> {props.currentStep}/3</span>
         <img src="chevron_right.png"></img>
       </button>
     </div>
